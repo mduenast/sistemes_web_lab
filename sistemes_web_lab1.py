@@ -26,7 +26,9 @@ class Client(object):
             resultats = []
             for element in elements:
                 data = element.find("time")["datetime"]
-                resultats.append(data)
+                title = element.find("span","flink-title")
+                title = title.text if title else "Sense title"
+                resultats.append((data,title))
             return resultats
 
         def main(self):
